@@ -65,6 +65,7 @@ namespace CS_AdvSesstion03
 
             #endregion
             #region Dictionary
+            #region Example01
             Dictionary<string, int> StdGradeDict = new Dictionary<string, int>
               {
                   {"Ahmed", 100 },
@@ -78,8 +79,8 @@ namespace CS_AdvSesstion03
             //Console.WriteLine($"{result},{value}"); 
             #endregion
             #region TryAdd
-           bool isAdd= StdGradeDict.TryAdd("ahmed", 333);
-            Console.WriteLine(isAdd);
+            //bool isAdd= StdGradeDict.TryAdd("ahmed", 333);
+            // Console.WriteLine(isAdd);
             #endregion
             #region Iteration
             //foreach (KeyValuePair<string,int> item in StdGradeDict)
@@ -95,8 +96,14 @@ namespace CS_AdvSesstion03
             //Console.WriteLine(StdGradeDict["Ahmed"]);
             //StdGradeDict["Ahmed"] = 30;
             #endregion
-
-
+            #region ContainsKey
+            if (!StdGradeDict.ContainsKey("Ahmed"))
+            {
+                StdGradeDict.Add("Ahmed", 22);
+            }
+            #endregion
+            #endregion
+            #region Example02
             // That Version Know that Ahmed and ahmed are the same
             Dictionary<string, int> StdGradeDict02 = new Dictionary<string, int>(new StringEqualityComparer())
               {
@@ -105,6 +112,69 @@ namespace CS_AdvSesstion03
                   {"Nora", 90 },
                   // {"ahmed", 55 } // It will throw an exception if you add this 
               };
+
+            #endregion
+            #region Exmaple03
+            // Comparing based on object state (I overrided Equals() & GetHashCode())
+            Employee emp01 = new Employee(1, "ahmed", 8000);
+            Employee emp02 = new Employee(4, "ali", 4000);
+            Employee emp03 = new Employee(3, "nora",5000); 
+            Employee emp04 = new Employee(3, "nora",5000); 
+            Employee emp05 = new Employee(4, "nora",5000); 
+            Dictionary<Employee,int> EmpRank= new Dictionary<Employee, int>
+            {
+                { emp01, 1 },
+                { emp02, 2 },
+                { emp03, 3 },
+                //{ emp04, 4 },
+                { emp05, 5 }
+            };
+         // Comparing based on Id
+            Dictionary<Employee,int> EmpRank02= new Dictionary<Employee, int>(new IdEqualityComparer())
+            {
+                { emp01, 1 },
+                { emp02, 2 },
+                { emp03, 3 },
+                //{ emp04, 4 },
+                { emp05, 5 }
+            };
+            #endregion
+            #endregion
+            #region SortedDictionary
+            #region Example01
+            SortedDictionary<string, int> StdGrades = new SortedDictionary<string, int>()
+            {
+                {"samar",66 },
+                {"khaled",77 },
+                {"ali",55 },
+                {"Amir",56 },
+                {"ahmed",33 }
+
+            };
+            //foreach (var item in StdGrades)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            SortedDictionary<string, int> StdGrades02 = new SortedDictionary<string, int>(new StringComparer())
+            {
+                {"samar",66 },
+                {"khaled",77 },
+                {"ali",55 },
+                {"Amir",56 },
+                {"ahmed",33 }
+
+            };
+            //foreach (var item in StdGrades02)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+            #endregion
+            #region Example02
+            // SortedDictionary of user definded Data type
+            // this data type must be implementing IComparable<this type> for default bevaior 
+            // or implement ICompare<this type> for Custome Behaviors
+            #endregion
+
             #endregion
         }
     }
