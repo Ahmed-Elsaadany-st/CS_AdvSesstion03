@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace CS_AdvSesstion03
 {
@@ -6,6 +7,10 @@ namespace CS_AdvSesstion03
     {
         static void Main(string[] args)
         {
+            #region Some Informations
+            //Any Collection bigins with 'sorted' Depends on IComparable<> or IComparer<>
+            //The Other Collections Depends on Equals(),GetHashCode() (form object or IEquatable<>or IEqualityComparer<>)
+            #endregion
             #region HashTable
             Hashtable StdGrade = new Hashtable
             {
@@ -173,9 +178,56 @@ namespace CS_AdvSesstion03
             // SortedDictionary of user definded Data type
             // this data type must be implementing IComparable<this type> for default bevaior 
             // or implement ICompare<this type> for Custome Behaviors
+
+            SortedDictionary<Employee,int> EmployeesRank = new SortedDictionary<Employee, int>()
+            {
+                [new Employee(4,"nora",6000)]=6,
+                [new Employee(1,"hamed",4000)]=1,
+                [new Employee(2,"ahmed",4000)]=2,
+
+            };
+            //foreach (var emp in EmployeesRank)
+            //{
+            //    Console.WriteLine($"{emp}");
+            //}
             #endregion
 
             #endregion
+            #region SortedList
+            //The Same as SortedDictionay but , it depends internally on two arrays one for keys and one for values
+            // SortedList of user definded Data types=>
+            // this data type must be implementing IComparable<this type> for default bevaior ,
+            // or implement IComparer<this type> for Custome behaviors
+
+            //It has another index (Which we can access Via methods like GetValueAtIndex(i),GetKeyAtIndex(i),SetValueAtIndex()/*Updates the value*/)
+            #endregion
+            #region HashSet
+            // It Ignores Duplicate keys Which means the elements are Distinct(Unique)
+            HashSet<string> names = new HashSet<string>(new StringEqualityComparer())
+            {
+                "hamed","ali","nora","Ahmed","Nour","Khalid","ahmed"
+            };
+            //foreach (string name in names)
+            //{
+            //    Console.WriteLine(name);
+            //}
+
+            HashSet<int> NumbersSet01 = [1, 2, 3, 4, 5, 6, 7, 8,];
+            HashSet<int> NumbersSet02 = [1, 2, 3, 66,77,88];
+            //Some ISet Methods//
+            //NumbersSet01.UnionWith(NumbersSet02);
+            //NumbersSet01.Add(-3);
+            //NumbersSet01.IntersectWith(NumbersSet02);
+            //NumbersSet01.ExceptWith(NumbersSet02); //Non Common Element
+            //NumbersSet01.SymmetricExceptWith(NumbersSet02);
+
+            //foreach (var num in NumbersSet01)
+            //{
+            //    Console.WriteLine($"{num} ");
+            //}
+
+            #endregion
+           
         }
     }
 }
