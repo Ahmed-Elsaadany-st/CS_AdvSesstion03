@@ -227,7 +227,64 @@ namespace CS_AdvSesstion03
             //}
 
             #endregion
-           
+            #region SortedSet
+            #region primitive Data type
+            #region inOrder
+
+            SortedSet<int> numbers = new SortedSet<int>();
+
+
+            numbers.Add(5);
+            numbers.Add(2);
+            numbers.Add(8);
+            numbers.Add(3);
+            numbers.Add(1);
+
+
+            //Console.WriteLine("Sorted numbers:");
+            //foreach (int number in numbers)
+            //{
+            //    Console.WriteLine(number);
+            //} 
+
+            int maxNumber = numbers.Max;
+            int minNumber = numbers.Min;
+            //Console.WriteLine($"max number is {maxNumber}");
+            //Console.WriteLine($"min number is {minNumber}");    
+
+            // these properties depends on the sorting of the sortedSet(if you reversed the order they will be reversed as well (Like the following example))
+            // you can use extesion methods Max(),Min() they will give the correct answer.
+
+            SortedSet<int> RangeNums = numbers.GetViewBetween(1, 8);
+            //foreach (var num in RangeNums)
+            //{
+            //    Console.Write($"{num} ");
+            //}
+            #endregion
+            #region Reversed Order
+            SortedSet<int> ReversedNumbers = new SortedSet<int>(new intComparer());
+
+
+            ReversedNumbers.Add(5);
+            ReversedNumbers.Add(2);
+            ReversedNumbers.Add(8);
+            ReversedNumbers.Add(3);
+            ReversedNumbers.Add(1);
+
+
+            //Console.WriteLine("Sorted numbers in reverse order:");
+            //foreach (int number in ReversedNumbers)
+            //{
+            //    Console.WriteLine(number);
+            //} 
+            #endregion
+            #endregion
+            #region User definded data type
+
+            #endregion
+
+            #endregion
+
         }
     }
 }
